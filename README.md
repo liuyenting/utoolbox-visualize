@@ -1,4 +1,4 @@
-# uToolbox Template
+# uToolbox [Visualize]
 ABSTRACT
 
 ## Installation

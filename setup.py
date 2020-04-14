@@ -7,28 +7,9 @@ cwd = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(cwd, "README.md"), encoding="utf-8") as fd:
     long_description = fd.read()
 
-try:
-    from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
-
-    class bdist_wheel(_bdist_wheel):
-        """
-        Patch bdist_wheel to force package as platform wheel.
-        
-        Reference:
-            https://stackoverflow.com/a/45150383
-        """
-
-        def finalize_options(self):
-            _bdist_wheel.finalize_options(self)
-            self.root_is_pure = False
-
-
-except ImportError:
-    bdist_wheel = None
-
 setup(
     # published project name
-    name="utoolbox-template",
+    name="utoolbox-visualize",
     # from dev to release
     #   bumpversion release
     # to next version
@@ -39,7 +20,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     # project homepage
-    url="https://github.com/liuyenting/utoolbox-template",
+    url="https://github.com/liuyenting/utoolbox-visualize",
     # name or organization
     author="Liu, Yen-Ting",
     classifiers=[
@@ -74,8 +55,6 @@ setup(
     data_files=[],
     # executable scripts
     entry_points={"console_scripts": []},
-    # command hooks
-    cmdclass={"bdist_wheel": bdist_wheel},
     # project is compressable
-    zip_safe=True,
+    zip_safe=False,
 )
